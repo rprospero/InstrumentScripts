@@ -11,16 +11,12 @@ from __future__ import print_function
 import os.path
 import numpy as np
 try:
-    # pylint: disable=import-error
-    from genie_python import genie as g
-except ImportError:
-    from general.scans.scans.mocks import g
-try:
     import LSS.SANSroutines as lm  # pylint: disable=import-error
 except ImportError:
     from general.scans.scans.mocks import lm
 from general.scans.scans.defaults import Defaults
 from general.scans.scans.detector import dae_periods
+from general.scans.scans.genie import g
 from general.scans.scans.monoid import Polarisation, Average, MonoidList
 from general.scans.scans.util import local_wrapper
 
