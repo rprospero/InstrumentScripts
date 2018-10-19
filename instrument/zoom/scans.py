@@ -5,12 +5,12 @@ contained in this module
 
 """
 from __future__ import print_function
-from .Defaults import Defaults
-from .Detector import dae_periods
+from genie.scans.scans.defaults import Defaults
+from genie.scans.scans.detector import dae_periods
 from general.scans.scans.genie import g
-from .Motion import populate
-from .Monoid import Sum, Average
-from .Util import make_scan
+from genie.scans.scans.motion import populate
+from genie.scans.scans.monoid import Sum
+from genie.scans.scans.util import make_scan
 
 def _trans_mode():
     """Setup the instrument for a simple transmission measurement."""
