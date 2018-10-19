@@ -13,12 +13,12 @@ import numpy as np
 try:
     import LSS.SANSroutines as lm  # pylint: disable=import-error
 except ImportError:
-    from general.scans.scans.mocks import lm
-from general.scans.scans.defaults import Defaults
-from general.scans.scans.detector import dae_periods
-from general.scans.scans.genie import g
-from general.scans.scans.monoid import Polarisation, Average, MonoidList
-from general.scans.scans.util import local_wrapper
+    from general.scans.mocks import lm
+from general.scans.defaults import Defaults
+from general.scans.detector import dae_periods
+from general.scans.genie import g
+from general.scans.monoid import Polarisation, Average, MonoidList
+from general.scans.util import local_wrapper
 
 
 def _trans_mode():
