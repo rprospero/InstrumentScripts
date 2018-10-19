@@ -3,18 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to PyGenie Scans's documentation!
-=========================================
+Welcome to the Genie Python instrument scripts documentation
+============================================================
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
-   tutorial
-   instrument
+   scans/index.rst
    reference
-   issues
 
 
 Indices and tables
