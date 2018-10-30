@@ -12,6 +12,11 @@ general.scans.defaults
 .. automodule:: general.scans.defaults
    :members:
 
+general.scans.detector
+----------------------
+.. automodule:: general.scans.detector
+   :members:
+
 general.scans.fit
 -----------------
 .. automodule:: general.scans.fit

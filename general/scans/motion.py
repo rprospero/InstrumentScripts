@@ -34,6 +34,9 @@ class Motion(object):
     >>> Foo(5)
     >>> Foo()
     5
+    >>> Foo -= 3
+    >>> Foo()
+    2
 
     """
 
@@ -75,12 +78,11 @@ class Motion(object):
 
         Returns
         =======
-
-        Tuple (Bool, Str)
-
-        The boolean represents whether the possition can be reached
-        The string is an error message explaining why the position is
-        unreachable.
+        reachable : bool
+          Whether the possition can be reached
+        error : str
+          The string is an error message explaining why the position
+          is unreachable, if it is so.
 
         """
         if self.low is not None and x < self.low:
@@ -146,7 +148,21 @@ class BlockMotion(Motion):
 
 
 def pv_motion(pv_str, name):
-    """Create a motion object around a PV string."""
+    """Create a motion object around a PV string.
+
+    Parameters
+    ----------
+    pv_str : str
+      The PV string to be controlled by the motion object
+    name : str
+      The human readable name of the motion object
+
+    Returns
+    -------
+    Motion
+      A motion object that operates on that PV.
+
+    """
     return Motion(lambda: g.get_pv(pv_str),
                   lambda x: g.set_pv(pv_str, x),
                   name)

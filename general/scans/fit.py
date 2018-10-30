@@ -45,6 +45,14 @@ class Fit(object):
     We need to be able to turn a set of data points into a set of
     parameters, get the simulated curve from a set of parameters, and
     extract usable information from those parameters.
+
+    Parameters
+    ----------
+    degree : int
+      How many data points are needed before fitting can be attempted.
+      This prevents attempting to fit underconstrained systems.
+    title : str
+      What to name the fit on the graph.
     """
 
     def __init__(self, degree, title):
@@ -57,6 +65,19 @@ class Fit(object):
         variables.  It returns a set of parameters in a format that is
         convenient for this specific object.
 
+        Parameters
+        ----------
+        x :  list of float
+          The independent variables
+        y :  list of float
+          The dependent variables
+
+        Returns
+        -------
+        list of float
+          A list of parameters that, in order, give the best fit to
+          the function.
+
         """
         return lambda i, j: None
 
@@ -66,6 +87,17 @@ class Fit(object):
         parameters and returns the expected dependent variables for
         those parameters
 
+        Parameters
+        ----------
+        x : list of float
+          The independent variables
+        fit : list of float
+          The parameters for the module function
+
+        Returns
+        -------
+        list of float
+          The value of the model at the given locations
         """
         return lambda i, j: None
 
@@ -74,6 +106,15 @@ class Fit(object):
         """Readable turns the implementation specific set of fit parameters
         into a human readable dictionary.
 
+        Parameters
+        ----------
+        fit : list of float
+          The parameters for the module function
+
+        Returns
+        -------
+        dict of float
+          A human readable dictionary of labelled model parameters
         """
         return lambda i: {}
 
@@ -85,6 +126,11 @@ class Fit(object):
         ==========
         params
           The list of fit method parameters
+
+        Returns
+        =======
+        str
+          The name of this particular fit
         """
         # pylint: disable=unused-argument
         return self._title
@@ -473,10 +519,13 @@ Linear = PolyFit(1, title="Linear")
 #: A gaussian fit
 Gaussian = GaussianFit()
 
+#: A damped oscillator fit
 DampedOscillator = DampedOscillatorFit()
 
+#: An error function fit, which is useful for finding edges
 Erf = ErfFit()
 
+#: A top hat fit, which can be useful for finding centers of regions.
 TopHat = TopHatFit()
 
 ExactPoints = ExactFit()

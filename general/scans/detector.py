@@ -112,7 +112,8 @@ def specific_spectra(spectra_list, preconfig=lambda: None):
 
     Examples
     ========
-    >> specific_spectra([[4], range(1000,2000)])
+    >>> specific_spectra([[4], range(1000,2000)])
+
     Will create a plot with two data points on it.  The first will be
     all of the counts in monitor four.  The second will be the combined
     sum of the counts in channels 1000 through 1999, inclusive."""

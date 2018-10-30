@@ -97,6 +97,16 @@ class Scan(object):
     def map(self, func):
         """The map function returns a modified scan that performs the given
         function on all of the original positions to return the new positions.
+
+        Parameters
+        ----------
+        func : function
+          The function to call on each original location to get the new location
+
+        Returns
+        -------
+        Scan
+          A scan through the newly modified locations
         """
         pass
 
@@ -148,7 +158,21 @@ class Scan(object):
         """Run over the scan an perform a simple measurement at each position.
         The measurement parameter can be used to set what type of measurement
         is to be taken.  If the save parameter is set to a file name, then the
-        plot will be saved in that file."""
+        plot will be saved in that file.
+
+        Parameters
+        ----------
+        detector : DetectorManager
+          The object used to collect data at each location.  If none is given,
+          the default of the instrument will ve used
+        save : str
+          The file where an image of the plot should be saved.  If none is
+          given, no file will be created.
+        action : function
+          A function to be called on the data after each new data point.
+          This parameter is usually used by fits to allow them to plot their
+          models.
+        """
         import warnings
         warnings.simplefilter("ignore", UserWarning)
 
@@ -203,7 +227,9 @@ class Scan(object):
         "{theta}" will include the current value of the theta motor if
         it is being iterated over.
 
-        WARNING: This function is deprecated and will be removed in
+        WARNING
+        -------
+        This function is deprecated and will be removed in
         the next release.
 
         """
@@ -216,6 +242,17 @@ class Scan(object):
         """The fit method performs the scan, plotting the points as they are
         taken.  Once the scan is completed, a fit is then plotted over
         the scan and the fitting parameters are returned.
+
+        Parameters
+        ----------
+        fit : Fit
+          The model to fit over the scan
+
+        Returns
+        -------
+        dict of float
+          A human readable dictionary containing the parameters and their
+          values that provide the best fit.
 
         """
 
@@ -243,6 +280,17 @@ class Scan(object):
         keyword, if set to true, prevents the printing of the expected
         time of completion.
 
+        Parameters
+        ----------
+        time : bool
+          Whether to print the expected time of completion
+        pad : float
+          How much time to add to each step to account for motor movement
+
+        Returns
+        -------
+        float
+          How long, in seconds, the measurement is expected to require.
         """
         from datetime import timedelta, datetime
         total = len(self) * (pad + estimate(**kwargs))
@@ -340,7 +388,15 @@ class SumScan(Scan):
 
 class ProductScan(Scan):
     """ProductScan performs every possible combination of the positions of
-    its two constituent scans."""
+    its two constituent scans.
+
+    Parameters
+    ----------
+    outer : Scan
+      The scan which will only be passed through once
+    innter : Scan
+      The scan which will be called on each element of the outer scan
+    """
     def __init__(self, outer, inner):
         self.outer = outer
         self.inner = inner
@@ -465,7 +521,16 @@ class ProductScan(Scan):
 
 class ParallelScan(Scan):
     """ParallelScan runs two scans alongside each other, performing both
-    sets of position adjustments before each step of the scan."""
+    sets of position adjustments before each step of the scan.
+
+    Parameters
+    ----------
+    first : Scan
+      The first of the two motions to begin
+    second : Scan
+      The second motion to begin
+    """
+
     def __init__(self, first, second):
         self.first = first
         self.second = second
@@ -507,7 +572,13 @@ class ForeverScan(Scan):  # pragma: no cover
     """
     ForeverScan repeats the same scan over and over again to improve
     the statistics until the user manually halts the scan.
+
+    Parameters
+    ----------
+    scan : Scan
+      The scan to run until eternity
     """
+
     def __init__(self, scan):
         self.scan = scan
         self.defaults = scan.defaults

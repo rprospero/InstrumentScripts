@@ -79,34 +79,35 @@ class Defaults(object):
         The scan function itself has one mandatory parameter `motion`
         but will require another three keyword parameters to define
         the range of the scan.  In the example above, the motion
-        parameter was TRANSLATION and the keyword parameters were
-        start, stop, and stride.  Any set of three position parameters
-        that uniquely define a range of motions will be accepted.
+        parameter was `coarsez` and the keyword parameters were
+        `before`, `step`, and `gaps`.  Any set of three position
+        parameters that uniquely define a range of motions will be
+        accepted.
 
         PARAMETERS
         ----------
-        motion
+        motion : Motion
           The axis on which to perform the scan
-        start
+        start : float
           An absolute starting position for the scan.
-        stop
+        stop : float
           An absolute ending position for the scan
-        step
+        step : float
           The absolue step size.  The final position may be skipped if
           it is not an integer number of steps from the starting
           position.
-        frames
+        frames : int
           How many frames the measurement should be performed for.  If
           set to None or 0, then no automatic plot will be started.
-        before
+        before : float
           A relative starting position for the scan.
-        after
+        after : float
           A relative ending position for the scan
-        count
+        count : int
           The number of points to measure
-        gaps
+        gaps : int
           The number of steps to take
-        stride
+        stride : float
           The approximate step size.  The scan may shrink this step size
           to ensure that the final point is still included in the scan.
 
@@ -163,17 +164,17 @@ class Defaults(object):
 
         Parameters
         ----------
-        motor
-        The axis to scan
-        start
-        The initial position
-        stop
-        The final position
-        intervals
-        How many steps to take between the initial and final position
-        time
-        If positive, the measurement time at each point in seconds.  If
-        negative, the measurement frames at each point.
+        motor : Motion
+          The axis to scan
+        start : float
+          The initial position
+        stop : float
+          The final position
+        intervals : int
+          How many steps to take between the initial and final position
+        time : float
+          If positive, the measurement time at each point in seconds.
+          If negative, the measurement frames at each point.
 
         """
         if time > 0:
@@ -197,17 +198,17 @@ class Defaults(object):
 
         Parameters
         ----------
-        motor
-        The axis to scan
-        start
-        The initial position as an offset from the current position
-        stop
-        The final position as an offset from the current position
-        intervals
-        How many steps to take between the initial and final position
-        time
-        If positive, the measurement time at each point in seconds.  If
-        negative, the measurement frames at each point.
+        motor : Motion
+          The axis to scan
+        start : float
+          The initial position as an offset from the current position
+        stop : float
+          The final position as an offset from the current position
+        intervals : int
+          How many steps to take between the initial and final position
+        time : float
+          If positive, the measurement time at each point in seconds.
+          If negative, the measurement frames at each point.
 
         """
         init = motor()
@@ -239,17 +240,21 @@ class Defaults(object):
 
         Parameters
         ----------
-        motor
-        The axis to scan
-        before
-        The initial position as an offset from the current position
-        after
-        The ending position as an offset from the current position
-        step
-        The absolute step size
-        frames
-        The number of pulse frames to measure at each point
+        motor : Motion
+          The axis to scan
+        before : float
+          The initial position as an offset from the current position
+        after : float
+          The ending position as an offset from the current position
+        step : float
+          The absolute step size
+        frames : int
+          The number of pulse frames to measure at each point
 
+        Returns
+        -------
+        Scan
+          A scan object that will run through the requested points.
         """
         init = motor()
         try:
