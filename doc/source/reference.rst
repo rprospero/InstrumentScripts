@@ -59,3 +59,35 @@ technique.sans.util
 ---------
 .. automodule:: technique.sans.util
    :members:
+
+instrument.larmor
++++++++++++++++++
+
+instrument.larmor.scans
+-----------------------
+.. automodule:: instrument.larmor.scans
+   :members:
+
+instrument.larmor.sans
+----------------------
+.. automodule:: instrument.larmor.sans
+   :members:
+
+instrument.larmor.util
+----------------------
+.. automodule:: instrument.larmor.util
+   :members:
+
+
+instrument.zoom
++++++++++++++++
+
+instrument.zoom.scans
+---------------------
+.. automodule:: instrument.zoom.scans
+   :members:
+
+instrument.zoom.sans
+--------------------
+.. automodule:: instrument.zoom.sans
+   :members:
