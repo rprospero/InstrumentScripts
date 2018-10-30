@@ -14,7 +14,6 @@ Contents:
    scans/index.rst
    sans/index.rst
    contributing
-   reference
 
 
 Indices and tables
