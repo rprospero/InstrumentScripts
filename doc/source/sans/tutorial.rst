@@ -79,8 +79,8 @@ A couple of things changed with this new command.
    the instrument has dutifully moved into position QT before starting
    the measurement.
 
-#. We specified the beam size.  The individual beamlines will have the
-   opportunity to decide their own aperature settings, but they should
+#. We specified the beam size.  The individual beam-lines will have the
+   opportunity to decide their own aperture settings, but they should
    hopefully reach a consensus on the names.
 
 #. The sample has been marked as a blank.  The MEASUREMENT:TYPE block
@@ -195,7 +195,7 @@ back into event mode.
 ['4periods', 'bsalignment', 'diffraction', 'event', 'event_fastsave', 'histogram', 'monitorsonly', 'monotest', 'nr', 'nrscanning', 'polarised', 'resonantimaging', 'resonantimaging_choppers', 'scanning', 'sesans', 'transmission', 'tshift']
 
 The :py:meth:`ScanningInstrument.enumerate_dae` function will list all
-of the supported dae modes on the current beamline.
+of the supported DAE modes on the current beam-line.
 
 Automated script checking
 =========================

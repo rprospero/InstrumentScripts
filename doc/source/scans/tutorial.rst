@@ -81,7 +81,7 @@ Plot Motor Scan
 
   The ``save`` argument allows the figure to be saved to a file.
   Otherwise, the screen will show the plot interactively.  Also,
-  notice we've given the time for each measuremnt in ``seconds``
+  notice we've given the time for each measurement in ``seconds``
   instead of frames.  The values or ``minutes``, ``hours``, and
   ``uamps`` are also accepted.
 
@@ -309,7 +309,7 @@ Perform complex scans
 
   Some uses need more complicated measurements that just a simple scan
   over a single axis.  These more complicated commands may need some
-  initial coaching from the beamline scientist, but should be simple
+  initial coaching from the beam-line scientist, but should be simple
   enough for the user to modify them without assistance.
 
   >>> th= scan(theta, start=0, stop=1, stride=0.3)
@@ -409,7 +409,7 @@ Estimate time
 
   It's not all that uncommon for users to find themselves setting an
   overnight run to perform while they sleep.  Since they are usually
-  writing these scripts around two in the morning, their arithemtic
+  writing these scripts around two in the morning, their arithmetic
   skills frequently fail.  When the run terminates prematurely, the
   beam time is wasted.  When the user underestimates the time that
   they're requesting, they wake up to find that their measurements
@@ -514,7 +514,7 @@ Class setup
   ensures that any functionality added to this class or bugs fixed in
   its code propagate out to all callers of this library.  Unfortunately,
   Python does not have a concept of interfaces, so we cannot force all
-  children to have a set of defined functions.  However, any subclasses
+  children to have a set of defined functions.  However, any sub-classes
   of ``Scan`` must contain the follow member functions:
 
   :map: Create a modified version of the scan based on a user supplied
@@ -527,7 +527,7 @@ Class setup
   :__iter__: Return an iterator that steps through the scan one position at
 	    a time, yielding the current position at each point.
 
-  There are four default subclasses of Scan that should handle most of
+  There are four default sub-classes of Scan that should handle most of
   the requirements
 
   SimpleScan
@@ -611,11 +611,11 @@ Functionality
 =============
 
   The code should be able to perform all of the tasks that might involve
-  scanning on the beamline, from the common place to the irregular.
+  scanning on the beam-line, from the common place to the irregular.
 
-  Plotting: It should be possible to plot any readback value as a function
+  Plotting: It should be possible to plot any read-back value as a function
 	    of any set of motor positions.  Scans of multiple axes should
-	    be able to either plot multiple labelled lines or a 2D heatmap
+	    be able to either plot multiple labelled lines or a 2D heat-map
   Measuring: Performing a full series of measurements should only be a
 	     minor modification of the plotting command
   Fitting: The user should be capable of performing fits on curves to
