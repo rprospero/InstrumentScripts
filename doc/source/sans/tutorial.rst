@@ -57,7 +57,7 @@ parameters that will be covered for measure can also be applied to
 ``do_sans`` and ``do_trans``. Below is an example of the extended
 information that can be passed to these functions.
 
->>> measure("Sample Name", "QT", aperature="Medium", blank=True, uamps=5)
+>>> measure("Sample Name", "QT", aperture="Medium", blank=True, uamps=5)
 Setup Larmor for event
 Moving to sample changer position QT
 Using the following Sample Parameters
@@ -592,7 +592,7 @@ Under the hood
 ==============
 
 >>> gen.reset_mock()
->>> measure("Test", "BT", dae="event", aperature="Medium", uamps=15)
+>>> measure("Test", "BT", dae="event", aperture="Medium", uamps=15)
 Setup Larmor for event
 Moving to sample changer position BT
 Using the following Sample Parameters
