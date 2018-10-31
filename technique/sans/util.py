@@ -1,4 +1,4 @@
-"""Useful utilities for scriping"""
+"""Useful utilities for scripting"""
 from functools import wraps
 import logging
 from logging import info, debug
@@ -17,9 +17,11 @@ def dae_setter(suffix, measurement_type):
 
     Returns
     =======
-    A decorator for setting the dae mode
+    function
+      A decorator for setting the dae mode
 
-    This decorator was designed to work on subclasses of the
+
+    This decorator was designed to work on sub-classes of the
     :py:class:`src.Instrument.ScanningInstrument` class.  The
     following functionality is added into the class
 
@@ -27,7 +29,6 @@ def dae_setter(suffix, measurement_type):
        returns immediately without taking any other actions
     2. If the wiring tables are in a different state, the change to the wiring
        tables is printed to the prompt before performing the actual change
-
 
     #1 of the above is the most important, as it allows the wiring
     tables to be set on any function call without worrying about

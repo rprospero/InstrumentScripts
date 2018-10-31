@@ -23,7 +23,7 @@ def _get_times(times):
 
 @add_metaclass(ABCMeta)  # pylint: disable=too-many-public-methods
 class ScanningInstrument(object):
-    """The base class for scanning measurement instruments."""
+    """The base class for sans measurement instruments."""
 
     _dae_mode = None
     _detector_lock = False
@@ -36,7 +36,7 @@ class ScanningInstrument(object):
         self.setup_trans = self.setup_dae_transmission
 
     def set_default_dae(self, mode=None, trans=False):
-        """Set the default DAE mode for SANS or TRANS measuremnts.
+        """Set the default DAE mode for SANS or TRANS measurements.
 
         Parameters
         ----------
@@ -72,12 +72,12 @@ class ScanningInstrument(object):
         Parameters
         ----------
         kwargs : dict
-        A dictionary of keyword arguments
+          A dictionary of keyword arguments
 
         Returns
         -------
         dict
-        Keyword arguments accepted by gen.waitfor
+          Keyword arguments accepted by gen.waitfor
         """
         result = {}
         for k in self.TIMINGS:
@@ -129,6 +129,7 @@ class ScanningInstrument(object):
         value : str
           The new measurement type
 
+
         This function should perform no physical changes to the
         beamline.  The only change should be in the MEASUREMENT:TYPE
         value stored in the journal for the next run, which should be
@@ -145,6 +146,7 @@ class ScanningInstrument(object):
         value : str
           The new sample label
 
+
         This function should perform no physical changes to the
         beamline.  The only change should be in the MEASUREMENT:LABEL
         value stored in the journal for the next run, which should be
@@ -160,6 +162,7 @@ class ScanningInstrument(object):
         ==========
         value : str
           The new id
+
 
         This function should perform no physical changes to the
         beamline.  The only change should be in the MEASUREMENT:ID
@@ -264,6 +267,8 @@ class ScanningInstrument(object):
     def detector_lock(self, state=None):
         """Query or activate the detector lock
 
+        Locking the detector prevents turning the detector on or off
+
         Parameters
         ==========
         state : bool or None
@@ -272,10 +277,8 @@ class ScanningInstrument(object):
 
         Returns
         =======
-        The current lock state as a bool
-
-        Locking the detector prevents turning the detector on or off
-        and bypasses the detector checks.
+        bool
+          The current lock state.
 
         """
         if state is not None:
@@ -294,7 +297,9 @@ class ScanningInstrument(object):
           If changing the detector state, whether to wait for the
           detector to finish warming up or powering down before
           continuing the script.
-        Returns :
+
+        Returns
+        -------
         bool
           If the detector is currently on
 
@@ -407,16 +412,25 @@ class ScanningInstrument(object):
           This option allows setting the default dae mode.  It takes a
           string that contains the name of the DAE mode to be used as
           the new default.  For example,
+
           >>> measure("Test", frames=10, dae="event")
+
           Is equivalent to
+
           >>> set_default_dae(setup_dae_event)
           >>> measure("Test", frames=10)
+
           If dae is a function, then the function is set to the default
+
           >>> measure("Test", frames=10, dae=foo)
+
           Is equivalent to
+
           >>> set_default_dae(foo)
           >>> measure("Test", frames=10)
+
           To get a full list of the supported dae modes, run
+
           >>> enumerate_dae()
         aperture : str
           The aperture size.  e.g. "Small" or "Medium" A blank string
@@ -496,8 +510,10 @@ class ScanningInstrument(object):
         """A wrapper around ``measure`` which ensures that the instrument is
 not in transmission mode
 
-Look at the documentation for ``measure`` to see the full set
-of parameters accepted. """
+Look at the documentation for :func:`ScanningInstrument.measure` to
+see the full set of parameters accepted.
+
+        """
         if "trans" in kwargs:
             del kwargs["trans"]
         self.measure(title, trans=False, pos=pos, thickness=thickness,
@@ -509,8 +525,9 @@ of parameters accepted. """
         """A wrapper around ``measure`` which ensures that the instrument is
 not in transmission mode.
 
-Look at the documentation for ``measure`` to see the full set
-of parameters accepted. """
+Look at the documentation for :func:`ScanningInstrument.measure` to
+see the full set of parameters accepted.
+        """
         if "trans" in kwargs:
             del kwargs["trans"]
         self.measure(title, trans=True, pos=pos, thickness=thickness,
@@ -540,7 +557,7 @@ of parameters accepted. """
         forever : bool
           If set to True, the instrument will repeatedly run the
           script manually stopped.  This can be useful for an
-          overnight run where you want to keep measureing until the
+          overnight run where you want to keep measuring until the
           users return.
 
         """
