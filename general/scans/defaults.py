@@ -2,7 +2,7 @@
 
 This module holds the base class for the instrument defaults.
 This is an abstract class which will need to be overwritten
-for each beamline.  This design was chosen because the
+for each beam-line.  This design was chosen because the
 subclass cannot be instantiated unless all of the abstract methods
 have been implemented.  This means that we detect mistakes in the
 subclass the moment that the Defaults object is created, instead of

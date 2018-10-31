@@ -50,7 +50,7 @@ class Fit(object):
     ----------
     degree : int
       How many data points are needed before fitting can be attempted.
-      This prevents attempting to fit underconstrained systems.
+      This prevents attempting to fit under-constrained systems.
     title : str
       What to name the fit on the graph.
     """
@@ -61,7 +61,7 @@ class Fit(object):
 
     @abstractmethod
     def fit(self, x, y):  # pragma: no cover
-        """The fit function takes arrays of independent and depedentend
+        """The fit function takes arrays of independent and dependent
         variables.  It returns a set of parameters in a format that is
         convenient for this specific object.
 

@@ -31,10 +31,10 @@ class DetectorManager(object):
 class DaePeriods(DetectorManager):
     """This helper class aids in making detector managers that perform all
     of their measurements in a single DAE run, instead of constantly
-    starting and stoping the DAE."""
+    starting and stopping the DAE."""
 
     def __init__(self, f, pre_init, period_function=len):
-        """Create a new detector manager that runs in a single Dae run
+        """Create a new detector manager that runs in a single DAE run
 
         Parameters
         ----------

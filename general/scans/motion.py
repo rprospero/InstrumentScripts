@@ -1,4 +1,4 @@
-"""This module contains helper classes for controlling motions on the beamline
+"""This module contains helper classes for controlling motions on the beam-line
 
 There's three levels of depth to this module.  At the simplest level, merely
 import and call populate().  This create motion object for every block

@@ -1,12 +1,12 @@
 """
-The module defines a series of Monoid classes for handlings
+The module defines a series of Monoid classes for handling
 measurements.  For the unfamiliar, a monoid is just a type that A) has
 a zero value and B) can be combined with other values of the same type
 to produce new monoids.  For example, Sum is a monoid because Sum(a) +
 Sum(b) = Sum(a+b) and Sum(a) + Sum(0) = Sum(a).
 
-Putting the incoming data into amonoid makes it easier to get the
-information out of a combined measuremnts.
+Putting the incoming data into a monoid makes it easier to get the
+information out of a combined measurements.
 """
 
 from abc import ABCMeta, abstractmethod
