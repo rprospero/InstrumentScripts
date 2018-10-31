@@ -1,11 +1,4 @@
-"""Instrument is an example module of an instrument setup.
-
-The motion commands simply adjust a global variable and the
-measurement commands just print some information.  It should never be
-used in production, but allows us to perform unit tests of the
-remaining code without needing a full instrument for the testing
-environment.
-
+"""This is the implementation of the scanning system for the larmor beam-line.
 """
 from __future__ import print_function
 import os.path
@@ -51,7 +44,12 @@ class Larmor(Defaults):
 
 
 def get_user_dir():
-    """Move to the current user directory"""
+    """Move to the current user directory.
+
+The user's directory is assumed to be the most modified sub-folder of
+all of the folders in U:/Users/.  If the U drive is not found, the
+current directory will be used instead.
+    """
     base = r"U:/Users/"
     try:
         dirs = [[os.path.join(base, x, d)

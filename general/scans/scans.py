@@ -101,12 +101,14 @@ class Scan(object):
         Parameters
         ----------
         func : function
-          The function to call on each original location to get the new location
+          The function to call on each original location to get the
+          new location
 
         Returns
         -------
         Scan
           A scan through the newly modified locations
+
         """
         pass
 

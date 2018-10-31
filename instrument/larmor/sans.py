@@ -1,4 +1,4 @@
-"""This is the instrument implementation for the Larmor beamline."""
+"""This is the sans instrument implementation for the Larmor beam-line."""
 from logging import info
 from technique.sans.instrument import ScanningInstrument
 from technique.sans.genie import gen
@@ -11,13 +11,13 @@ from .util import flipper1
 def sleep(seconds):
     """Override the sleep function to use genie.
 
-    We need this override to ensure that simularted runs are forced to
+    We need this override to ensure that simulated runs are forced to
     wait for real sleeps."""
     return gen.waitfor(seconds=seconds)
 
 
 class Larmor(ScanningInstrument):  # pylint: disable=too-many-public-methods
-    """This class handles the Larmor beamline"""
+    """This class handles the Larmor beam-line"""
 
     step = 100.0
     lrange = "0.9-13.25"
@@ -388,7 +388,7 @@ class Larmor(ScanningInstrument):  # pylint: disable=too-many-public-methods
         In : bool
           Whether to move the beam stop in or out
         """
-        # move beamstop in or out. The default is to move in
+        # move beam stop in or out. The default is to move in
         if In:
             gen.cset(BSY=88.5, BSZ=353.0)
         else:
@@ -436,7 +436,7 @@ class Larmor(ScanningInstrument):  # pylint: disable=too-many-public-methods
 
     @staticmethod
     def homes2():
-        """Rehome slit2.  This is currentl a no-op."""
+        """Rehome slit2.  This is currently a no-op."""
         info("Homing s2")
 
     def movebench(self, angle=0.0, delaydet=True):
